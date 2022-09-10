@@ -8,7 +8,11 @@ from flask import Flask, request
 import requests
 from celery import Celery
 from .modelos import db, BotonPanico
+
+
 celerity_app = Celery("task", broker="ruta") 
+
+
 app = create_app('default')
 app_context = app.app_context()
 app_context.push()
