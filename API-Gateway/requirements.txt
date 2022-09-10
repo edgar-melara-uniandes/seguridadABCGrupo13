@@ -1,0 +1,6 @@
+Faker
+Flask
+Flask-Cors
+Flask-RESTful
+marshmallow
+requests
