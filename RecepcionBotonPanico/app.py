@@ -1,11 +1,10 @@
 
 import datetime
-import json
-from tkinter import N
 from RecepcionBotonPanico import create_app
 from flask_restful import Resource, Api
 from flask import Flask, request
 import requests
+from flask_cors import CORS
 from celery import Celery
 from .modelos import db, BotonPanico
 
@@ -18,6 +17,7 @@ app_context = app.app_context()
 app_context.push()
 db.init_app(app)
 db.create_all()
+cors = CORS(app) 
 
 @celerity_app.task(name="nombre de la cola")
 def enviar_mensaje(mensaje):
