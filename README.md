@@ -14,7 +14,7 @@ Desde Powershell, `.\venv\Scripts\activate` o `.\venv\Scripts\Activate.ps1`
 
 Linux/MacOS:
 
-Desde una consola bash, source venv/bin/activate
+Desde una consola bash, `source venv/bin/activate`
 
 4. Instalar dependencias mediante `pip install -r requirements.txt`
 
