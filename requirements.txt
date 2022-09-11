@@ -1,6 +1,12 @@
+Celery==
 Flask==2.2.2
 Flask-Cors==3.0.10
 Flask-RESTful==0.3.9
 flask_monitoringdashboard==3.1.1
+flask_sqlalchemy==
+jsonpickle==
 marshmallow==3.17.1
+marshmallow_sqlalchemy==
+redis==
+redis-server
 requests==2.28.1
