@@ -17,6 +17,6 @@ app_context.push()
 cors = CORS(app)
 
 api = Api(app)
-api.add_resource(VistaBotonPanico,'/apigatewaybase/boton-panico/disparar/<string:id_boton>')
+api.add_resource(VistaBotonPanico,'/apigatewaybase/boton-panico/disparar')
 
 
