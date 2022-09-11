@@ -48,7 +48,7 @@ class VistaAccionBotonPanico(Resource):
             )
             print(args)
             db.session.remove()
-            enviar_mensaje.apply_async(args)
+            enviar_mensaje.apply_async((args,))
             return response, code
 
         
