@@ -9,6 +9,8 @@ from entidades.externos.boton_panico import MicroserviceBotonAlarmaSchema
 
 class VistaBotonPanico(Resource):
 
+    path_boton_panico = "http://127.0.0.1:5001/botonpanico/accionar"
+
     def post(self, id_boton):
         
         request_body = request.json
@@ -28,7 +30,7 @@ class VistaBotonPanico(Resource):
         }
 
         headers = {'Content-Type': 'application/json'}
-        ruta_recepcionBotonPanico = "http://localhost:5005/etc/ruta-de-boton-panico"
+        ruta_recepcionBotonPanico = self.path_boton_panico
         request_boton_panico_body = json.dumps(boton_panico_body) # ajustar a body David
 
         validate_salida = routed_schema_validation.load(boton_panico_body)
