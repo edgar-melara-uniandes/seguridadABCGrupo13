@@ -22,7 +22,7 @@ Desde una consola bash, `source venv/bin/activate`
 
 Los componentes están basados en el framework Flask (Python). Usar 
 
-`flask run -p <port>`
+`flask run -p <port>` desde una consola por componente, que apunte a cada carpeta de componete
 
 donde `<port>` corresponde al puerto de escucha del microservicio de API Gateway.
 
