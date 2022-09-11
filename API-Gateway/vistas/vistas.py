@@ -39,7 +39,7 @@ class VistaBotonPanico(Resource):
             post_boton_panico = requests.post(ruta_recepcionBotonPanico,
                                                    data=request_boton_panico_body,
                                                    headers=headers,timeout=10.000)
-        except requests.exceptions.ConnectTimeout as err:
+        except (requests.exceptions.ConnectTimeout, requests.exceptions.ConnectionError) as err:
             return 'Panico no responde. Intente de nuevo', 500
         
         response_boton_panico = json.loads(post_boton_panico.content)
