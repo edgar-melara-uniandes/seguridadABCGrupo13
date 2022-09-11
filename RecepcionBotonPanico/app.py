@@ -9,8 +9,7 @@ from celery import Celery
 from .modelos import db, BotonPanico
 
 
-celerity_app = Celery("task", broker="ruta") 
-
+celerity_app = Celery(__name__, broker="redis://localhost:6379/0")
 
 app = create_app('default')
 app_context = app.app_context()
@@ -19,7 +18,7 @@ db.init_app(app)
 db.create_all()
 cors = CORS(app) 
 
-@celerity_app.task(name="nombre de la cola")
+@celerity_app.task(name="monitor.logger")
 def enviar_mensaje(mensaje):
     pass
 class VistaAccionBotonPanico(Resource):
