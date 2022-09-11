@@ -31,7 +31,7 @@ class VistaBotonPanico(Resource):
         
         headers = {'Content-Type': 'application/json'}
         ruta_recepcionBotonPanico = self.path_boton_panico
-        request_boton_panico_body = json.dumps(boton_panico_body) # ajustar a body David
+        request_boton_panico_body = json.dumps(boton_panico_body)
 
         validate_salida = routed_schema_validation.load(boton_panico_body)
         
@@ -45,7 +45,7 @@ class VistaBotonPanico(Resource):
         response_boton_panico = json.loads(post_boton_panico.content)
 
         if post_boton_panico.status_code != "200":
-            return "Hubo un error al comunicarse con servicio de pánico, reintente de nuevo"+str(post_boton_panico.status_code)+str(response_boton_panico), 500
+            return "Hubo un error al comunicarse con servicio de pánico, reintente de nuevo", 500
         
         return "Señal del botón de pánico recibida exitosamente", 201
         
