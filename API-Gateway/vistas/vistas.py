@@ -24,18 +24,16 @@ class VistaBotonPanico(Resource):
         routed_schema_validation = MicroserviceBotonAlarmaSchema()
 
         boton_panico_body = {
-            "fecha_accionado": str(datetime.now().isoformat()),
+            "fecha_accionada": str(datetime.now().strftime('%d-%m-%Y %H:%M:%S')),
             "lugar": request_body["lugar"],
             "usuario": request_body["usuario"],
         }
-
+        
         headers = {'Content-Type': 'application/json'}
         ruta_recepcionBotonPanico = self.path_boton_panico
         request_boton_panico_body = json.dumps(boton_panico_body) # ajustar a body David
 
-        """  validate_salida = routed_schema_validation.load(boton_panico_body) """
-
-        boton_panico_body["fecha_accionado"] = str(boton_panico_body["fecha_accionado"])
+        validate_salida = routed_schema_validation.load(boton_panico_body)
         
         try:
             post_boton_panico = requests.post(ruta_recepcionBotonPanico,
@@ -46,8 +44,8 @@ class VistaBotonPanico(Resource):
         
         response_boton_panico = json.loads(post_boton_panico.content)
 
-        if post_boton_panico.status_code != "201":
-            return "Hubo un error al comunicarse con servicio de pánico, reintente de nuevo", 500
+        if post_boton_panico.status_code != "200":
+            return "Hubo un error al comunicarse con servicio de pánico, reintente de nuevo"+str(post_boton_panico.status_code)+str(response_boton_panico), 500
         
         return "Señal del botón de pánico recibida exitosamente", 201
         
