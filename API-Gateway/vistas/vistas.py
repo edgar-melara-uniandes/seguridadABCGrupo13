@@ -11,7 +11,7 @@ class VistaBotonPanico(Resource):
 
     path_boton_panico = "http://127.0.0.1:5001/botonpanico/accionar"
 
-    def post(self):
+    def post(self, id_boton):
         
         request_body = request.json
 
