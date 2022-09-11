@@ -44,7 +44,7 @@ class VistaBotonPanico(Resource):
         
         response_boton_panico = json.loads(post_boton_panico.content)
 
-        if post_boton_panico.status_code != 500:
+        if post_boton_panico.status_code != 200:
             return "Hubo un error al comunicarse con servicio de pánico, reintente de nuevo", 500
         
         return "Señal del botón de pánico recibida exitosamente", 201
