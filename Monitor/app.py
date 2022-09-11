@@ -1,4 +1,4 @@
-from monitor import create_app
+from Monitor import create_app
 from flask_restful import Resource, Api
 
 app = create_app('default')

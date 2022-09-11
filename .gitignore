@@ -127,3 +127,4 @@ dmypy.json
 *db
 # Pyre type checker
 .pyre/
+Monitor/tareas/log_boton_panico.txt
