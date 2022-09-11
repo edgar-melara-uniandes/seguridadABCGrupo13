@@ -20,7 +20,7 @@ Desde una consola bash, `.\venv\Scripts\activate`
 
 5. Para montar la aplicación:
 
-`flask run -p <port>` donde `<port>` corresponde al puerto de escucha del microservicio
+`flask run -p <port>` donde `<port>` corresponde al puerto de escucha del microservicio de API Gateway.
 
 No olvidar levantar el microservicio RecepcionBotonPanico que se encuentra en este mismo repositorio (ver README.md asociado)
 
