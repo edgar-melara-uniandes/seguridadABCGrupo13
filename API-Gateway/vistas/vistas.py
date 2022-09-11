@@ -9,7 +9,7 @@ from entidades.externos.boton_panico import MicroserviceBotonAlarmaSchema
 
 class VistaBotonPanico(Resource):
 
-    path_boton_panico = "http://127.0.0.1:5001/botonpanico/accionar"
+    path_boton_panico = "http://127.0.0.1:5005/botonpanico/accionar"
 
     def post(self, id_boton):
         
@@ -36,20 +36,18 @@ class VistaBotonPanico(Resource):
         validate_salida = routed_schema_validation.load(boton_panico_body)
 
         boton_panico_body["fecha_accionado"] = str(boton_panico_body["fecha_accionado"])
-
-        # endpoint_carreras = "/usuario/{}/carreras".format(str(self.usuario_code))
         
         try:
             post_boton_panico = requests.post(ruta_recepcionBotonPanico,
                                                    data=request_boton_panico_body,
-                                                   headers=headers,timeout=2.000)
+                                                   headers=headers,timeout=10.000)
         except requests.exceptions.ConnectTimeout as err:
             return 'Panico no responde. Intente de nuevo', 500
         
-        response_boton_panico = json.loads(post_boton_panico.get_data())
+        response_boton_panico = json.loads(post_boton_panico.content)
 
         if post_boton_panico.status_code != "201":
-            return "Hubo un error al comunicarse con servicio de pánico, reintente de nuevo", 500 #mensaje puro y HTTP code
+            return "Hubo un error al comunicarse con servicio de pánico, reintente de nuevo", 500
         
-        return "Señal del botón de pánico recibida exitosamente", 201 #mensaje puro y HTTP code
+        return "Señal del botón de pánico recibida exitosamente", 201
         
