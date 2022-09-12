@@ -1,9 +1,9 @@
 
 import datetime
+import random
 from RecepcionBotonPanico import create_app
 from flask_restful import Resource, Api
-from flask import Flask, request
-import requests
+from flask import request
 from flask_cors import CORS
 from celery import Celery
 from .modelos import db, BotonPanico
@@ -25,7 +25,13 @@ class VistaAccionBotonPanico(Resource):
 
     def post(self):
         response = dict()
-        code = 200
+
+        comportamiento = random.randint(0, 99)
+        if comportamiento < 90:
+            code = 201
+        else:
+            code = 503
+
         try:
             nueva_accion = BotonPanico(fecha_accionada = datetime.datetime.strptime(request.json['fecha_accionada'], "%d-%m-%Y %H:%M:%S"), \
             fecha_recepcion = datetime.datetime.now(), \
@@ -36,23 +42,25 @@ class VistaAccionBotonPanico(Resource):
         except:
             response["mensaje"] = "No logramos recibir alarma"
             response["status"] = "error"
-            code = 404
-        else:   
+            code = 400
+        
+        if code == 201:
             response["mensaje"] = "Recibimos la alarma con exito"
             response["status"] = "success"
-        finally:
-            args = dict(
-                solicitud = request.json,
-                response = response,
-                code = code
-            )
-            print(args)
-            db.session.remove()
-            enviar_mensaje.apply_async((args,))
-            return response, code
+        else:
+            response["mensaje"] = "FATAL_ERROR"
+            response["status"] = "error"
+        
+        args = dict(
+            solicitud = request.json,
+            response = response,
+            code = code
+        )
+        print(args)
+        db.session.remove()
+        enviar_mensaje.apply_async((args,))
+        return response, code
 
-        
-        
 api = Api(app)
 api.add_resource(VistaAccionBotonPanico, "/botonpanico/accionar")
 
