@@ -34,7 +34,7 @@ Para cada componente se han designado los siguientes puertos:
 * RecepcionBotonPanico: pt 5001
 * Monitor: pt 5006
 
-Para ejectuar las tareas de celery de tiene que estar en la carpeta Monitor
+Para ejectuar las tareas de celery se tiene que estar en la carpeta Monitor
 
 `cd Monitor`
 
