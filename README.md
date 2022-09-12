@@ -5,7 +5,7 @@ Contiene el código para montar a nivel local los componentes empleados para el 
 ## Instrucciones 
 
 0. Se recomienda usar un sistema operativo Linux/MacOS o máquina virtual basada en Linux
-1. Tener instalado redis.
+1. Tener instalado redis. Redis server v=6.2.7 
 2. Tener instalado la última versión de Python. Este código fue construido con v3.10.4
 3. Tener instalado el gestor de paquetes `pip`. Se empleó pip 22.0.4
 4. Crear un virtual environment para instalar las bibliotecas requeridos: `python -m venv /path/to/new/virtual/environment`
@@ -33,6 +33,10 @@ Para cada componente se han designado los siguientes puertos:
 * API-Gateway: pt 5000
 * RecepcionBotonPanico: pt 5001
 * Monitor: pt 5006
+
+Para ejectuar las tareas de celey de tiene que estar en la carpeta Monitor
+`cd Monitor`
+y ejecutar el comando ` Celery -A tareas.tareas worker -l info`
 
 Se cuenta con un archivo de configuración del dashboard de monitoreo Flask para el API Gateway y ayudar en la recolección de métricas:
 
