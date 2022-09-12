@@ -35,7 +35,9 @@ Para cada componente se han designado los siguientes puertos:
 * Monitor: pt 5006
 
 Para ejectuar las tareas de celey de tiene que estar en la carpeta Monitor
+
 `cd Monitor`
+
 y ejecutar el comando ` Celery -A tareas.tareas worker -l info`
 
 Se cuenta con un archivo de configuración del dashboard de monitoreo Flask para el API Gateway y ayudar en la recolección de métricas:
