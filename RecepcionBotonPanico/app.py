@@ -7,6 +7,7 @@ from flask import request
 from flask_cors import CORS
 from celery import Celery
 from .modelos import db, BotonPanico
+import json
 
 
 celerity_app = Celery(__name__, broker="redis://localhost:6379/0")
@@ -21,6 +22,11 @@ cors = CORS(app)
 @celerity_app.task(name="monitor.logger")
 def enviar_mensaje(mensaje):
     pass
+
+@celerity_app.task(name="decrypter.integrity-check")
+def integrity_check(mensaje):
+    pass
+
 class VistaAccionBotonPanico(Resource):
 
     def post(self):
@@ -59,6 +65,14 @@ class VistaAccionBotonPanico(Resource):
         print(args)
         db.session.remove()
         enviar_mensaje.apply_async((args,))
+
+        args_for_integrity_check = dict(
+            headers = json.dumps({k:v for k, v in request.headers.items()}),
+            solicitud = request.json,
+            response = response,
+            code = code
+        )
+        integrity_check.apply_async((args_for_integrity_check,))
         return response, code
 
 api = Api(app)
