@@ -23,7 +23,7 @@ cors = CORS(app)
 def enviar_mensaje(mensaje):
     pass
 
-@celerity_app.task(name="decrypter.integrity-check")
+@celerity_app.task(name="monitor.integrity")
 def integrity_check(mensaje):
     pass
 
