@@ -33,12 +33,6 @@ class VistaAccionBotonPanico(Resource):
     def post(self):
         response = dict()
 
-        comportamiento = random.randint(0, 99)
-        if comportamiento < 90:
-            code = 201
-        else:
-            code = 503
-
         try:
             nueva_accion = BotonPanico(fecha_accionada = datetime.datetime.strptime(request.json['fecha_accionada'], "%d-%m-%Y %H:%M:%S"), \
             fecha_recepcion = datetime.datetime.now(), \
@@ -46,17 +40,14 @@ class VistaAccionBotonPanico(Resource):
             usuario = request.json['usuario'])
             db.session.add(nueva_accion)
             db.session.commit()
+            
+            response["mensaje"] = "Recibimos la alarma con exito"
+            response["status"] = "success"
+            code = 200
         except:
             response["mensaje"] = "No logramos recibir alarma"
             response["status"] = "error"
             code = 400
-        
-        if code == 201:
-            response["mensaje"] = "Recibimos la alarma con exito"
-            response["status"] = "success"
-        else:
-            response["mensaje"] = "FATAL_ERROR"
-            response["status"] = "error"
         
         args = dict(
             solicitud = request.json,
