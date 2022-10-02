@@ -31,3 +31,13 @@ Verificacion de integridad con monitor - {'token': None, 'error': 'No se encontr
 Verificacion de integridad con monitor - {'token': None, 'error': 'No se encontro token'}
 Verificacion de integridad con monitor - {'token': None, 'error': 'No se encontro header'}
 Verificacion de integridad con monitor - {'token': None, 'error': 'No se encontro token'}
+Verificacion de integridad con monitor - {'token': 'dfaadsadadadasdasd', 'error': 'Error de autorización'}
+Verificacion de integridad con monitor - {'token': 'dfaadsadadadasdasd', 'error': 'Error en estructura del payload'}
+Verificacion de integridad con monitor - {'token': 'dfaadsadadadasdasd', 'error': 'Error de autorización'}
+Verificacion de integridad con monitor - {'token': 'dfaadsadadadasdasd', 'error': 'Error en estructura del payload'}
+Verificacion de integridad con monitor - {'token': 'dfaadsadadadasdasd', 'error': 'Error de autorización'}
+Verificacion de integridad con monitor - {'token': 'dfaadsadadadasdasd', 'error': 'Error en estructura del payload'}
+Verificacion de integridad con monitor - {'token': 'dfaadsadadadasdasd', 'error': 'Error de autorización'}
+Verificacion de integridad con monitor - {'token': 'dfaadsadadadasdasd', 'error': 'Error de autorización'}
+Verificacion de integridad con monitor - {'token': 'dfaadsadadadasdasd', 'error': 'Error de autorización'}
+Verificacion de integridad con monitor - {'token': 'dfaadsadadadasdasd', 'error': 'Error de autorización'}

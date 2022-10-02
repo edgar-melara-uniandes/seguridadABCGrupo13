@@ -17,9 +17,9 @@ class RegistroIntegridadSchema(SQLAlchemyAutoSchema):
         model = RegistroIntegridad
         load_instance = True     
 class BotonAlarmaSchema(Schema):
-    fecha_accionada = fields.DateTime(required=True)
+    fecha_accionada = fields.String(required=True)
     lugar = fields.String(required=True)
     usuario = fields.String(required=True)
     
-    def __repr__(self):
-        return '<BotonAlarma(name={self.fecha_accionado!r})>'.format(self=self)
+    """ def __repr__(self):
+        return '<BotonAlarma(name={self.fecha_accionado!r})>'.format(self=self) """
