@@ -13,6 +13,13 @@ Inicializar el server con permisos de admin `sudo nginx`
 
 probar el server `open http://localhost:8080/`
 
-abrir el archivo con el siguiente comando (utilizar editor de preferencia para este caso se utiliza vscode)`code /usr/local/etc/nginx/nginx.conf`
+detenemos la ejecuccion del server con el comanda `sudo nginx -s stop`
 
-el contenido de este archivo se reemplaza con el archivo **nginx.conf** en esta misma carpeta
+para agregar las rutas proxy tenemos que abrir el archivo con el siguiente comando (utilizar editor de preferencia para este caso se utiliza vscode)`code /usr/local/etc/nginx/nginx.conf`
+
+luego el contenido de este archivo se reemplaza con el archivo **nginx.conf** en esta misma carpeta
+
+para crear los certificados que utilizara el server corremos el siguiente comando `sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /usr/local/etc/nginx/nginx.key -out /usr/local/etc/nginx/nginx.crt`
+
+luego inicializamos nuevamente el server `sudo nginx`
+
