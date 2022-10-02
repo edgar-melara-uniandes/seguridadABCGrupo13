@@ -14,15 +14,11 @@ class RegistroIntegridad(db.Model):
 class RegistroIntegridadSchema(SQLAlchemyAutoSchema):
     class Meta:
         model = RegistroIntegridad
-        load_instance = True
-
-class BotonPanico(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    fecha_recepcion = db.Column(db.DateTime)
-    lugar = db.Column(db.String(128))
-    usuario = db.Column(db.String(128))
-
-class BotonPanicoSchema(SQLAlchemyAutoSchema):
-    class Meta:
-        model = BotonPanico
-        load_instance = True
+        load_instance = True     
+class BotonAlarmaSchema(Schema):
+    fecha_accionada = fields.DateTime(required=True)
+    lugar = fields.String(required=True)
+    usuario = fields.String(required=True)
+    
+    def __repr__(self):
+        return '<BotonAlarma(name={self.fecha_accionado!r})>'.format(self=self)
