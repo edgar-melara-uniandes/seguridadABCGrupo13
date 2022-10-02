@@ -4,15 +4,17 @@ import jwt
 from celery import Celery
 import json
 
-celery_app = Celery("tasks", broker="redis://localhost:6379/0")
+celery_app_decrypter = Celery("tasks", broker="redis://localhost:6379/0")
 
-@celery_app.task(name='monitor.integrity')
+celery_app_monitor = Celery("tasks", broker="redis://localhost:6379/1")
+
+@celery_app_decrypter.task(name='decrypter.integrity')
 def desencriptarMensaje(args):
     jsonHeaders = json.loads(args['headers'])
     token = str(jsonHeaders['Authorization']).split("Bearer ")[-1]
     validarTokenAutorizacion(token)
 
-@celery_app.task(name="monitor.security")
+@celery_app_monitor.task(name="monitor.logger.security")
 def publicar_mensaje(args):
     pass
 

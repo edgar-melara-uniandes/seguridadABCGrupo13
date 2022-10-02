@@ -9,8 +9,9 @@ from celery import Celery
 from .modelos import db, BotonPanico
 import json
 
+celerity_app_decrypter = Celery("tasks", broker="redis://localhost:6379/0")
 
-celerity_app = Celery(__name__, broker="redis://localhost:6379/0")
+celerity_app_monitor = Celery("tasks", broker="redis://localhost:6379/1")
 
 app = create_app('default')
 app_context = app.app_context()
@@ -19,11 +20,11 @@ db.init_app(app)
 db.create_all()
 cors = CORS(app) 
 
-@celerity_app.task(name="monitor.logger")
+@celerity_app_monitor.task(name="monitor.logger.disponibilidad")
 def enviar_mensaje(mensaje):
     pass
 
-@celerity_app.task(name="monitor.integrity")
+@celerity_app_decrypter.task(name="decrypter.integrity")
 def integrity_check(mensaje):
     pass
 
