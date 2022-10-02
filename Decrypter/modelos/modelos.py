@@ -9,7 +9,8 @@ class RegistroIntegridad(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     fecha_validacion = db.Column(db.DateTime)
     descripcion = db.Column(db.String(255))
-    mensaje_encriptado = db.Column(db.String(64000))
+    token_enviado = db.Column(db.String(64000))
+    mensaje = db.Column(db.String(64000))
 
 class RegistroIntegridadSchema(SQLAlchemyAutoSchema):
     class Meta:

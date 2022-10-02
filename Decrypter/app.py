@@ -1,6 +1,5 @@
 from Decrypter import create_app
 from flask_restful import Resource, Api
-from celery import Celery
 from .modelos import db
 
 
@@ -15,11 +14,6 @@ class VistaDecrypter(Resource):
 
     def get(self):
         return 'Monitor is working', 200
-    
-celery_app = Celery("tasks", broker="redis://localhost:6379/0")
-@celery_app.task(name="monitor.security")
-def publicar_mensaje(args):
-    pass
             
 api = Api(app)
 api.add_resource(VistaDecrypter, '/monitor')
