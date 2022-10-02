@@ -2,19 +2,26 @@ from datetime import datetime
 from Decrypter.modelos.modelos import db, BotonPanicoSchema, RegistroIntegridad
 import jwt
 from celery import Celery
+import json
 
 celery_app = Celery("tasks", broker="redis://localhost:6379/0")
 
 @celery_app.task(name='monitor.integrity')
 def desencriptarMensaje(args):
-    print(args)
-    mensaje = jwt.decode(args, "secret", algorithms=["HS256"])
-    print(mensaje)
-    validarMensaje(mensaje, args)
+    jsonHeaders = json.loads(args['headers'])
+    token = str(jsonHeaders['Authorization']).split("Bearer ")[-1]
+    validarTokenAutorizacion(token)
 
 @celery_app.task(name="monitor.security")
 def publicar_mensaje(args):
     pass
+
+def validarTokenAutorizacion(token):
+    descripcion = "Error de autorización"
+    try:
+        decodedToken = jwt.decode(token, key='LzhYpdKwoNOKwPMxLbsxsHL8x63YkQ54', algorithms=['HS256', ])
+    except:
+        publicar_mensaje.apply_async((dict(token=token, error=descripcion),))
 
 def validarMensaje(mensaje, token):
     descripcion = ""
