@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "f14ba137-4647-45e8-86be-9d26bd67a104",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23290346"
+	},
+	"item": [
+		{
+			"name": "botonpanico",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 123",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fecha_accionada\": \"12-11-2018 09:15:32\",\n    \"lugar\": \"Casa\",\n    \"usuario\": \"Orlando\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/botonpanico",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"botonpanico"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "botonpanico",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwic2VydmljZXMiOlt7ImlkIjoxLCJzZXJ2aWNlX25hbWUiOiJhbGwiLCJhY2Nlc3NfdHlwZSI6IndyaXRlIn0seyJpZCI6Miwic2VydmljZV9uYW1lIjoibG9naW4iLCJhY2Nlc3NfdHlwZSI6IndyaXRlIn0seyJpZCI6Mywic2VydmljZV9uYW1lIjoiYm90b25fcGFuaWNvIiwiYWNjZXNzX3R5cGUiOiJ3cml0ZSJ9XSwidXNlcm5hbWUiOiJhZG1pbiJ9.nIDwYpW7w0Fn8MD1felHX8wYxY-EHyKagS_R01Bn5X8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fecha_accionada\": \"12-11-2018 09:15:32\",\n    \"lugar\": \"Casa\",\n    \"usuario\": \"Orlando\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/botonpanico",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"botonpanico"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
