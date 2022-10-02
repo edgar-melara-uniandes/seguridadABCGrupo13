@@ -10,9 +10,13 @@ celery_app_monitor = Celery("tasks", broker="redis://localhost:6379/1")
 
 @celery_app_decrypter.task(name='decrypter.integrity')
 def desencriptarMensaje(args):
+    token=None
     jsonHeaders = json.loads(args['headers'])
     jsonSolicitud = args['solicitud']
-    token = str(jsonHeaders['Authorization']).split("Bearer ")[-1]
+    try:
+        token = str(jsonHeaders['Authorization']).split("Bearer ")[-1]
+    except: 
+        publicar_mensaje.apply_async((dict(token=token, error="No se encontro header"),))
     print(token)
     if token is not None:
         validarTokenAutorizacion(token)
