@@ -22,5 +22,9 @@ Desde una consola bash, `.\venv\Scripts\activate`
 
 `flask run -p <port>` donde `<port>` corresponde al puerto de escucha del microservicio de Decrypter.
 
+6. Montar el service worker:
+
+`celery -A Decrypter.tareas worker -l info`
+
 No olvidar levantar el microservicio Monitor que se encuentra en este mismo repositorio (ver README.md asociado)
 
